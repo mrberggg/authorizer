@@ -1,5 +1,5 @@
 {
-    "name": "berg/authorizer",
+    "name": "berg/authorize",
     "description": "A package for basic ACL/role feature with Laravel integration",
     "keywords": [ "authorize", "php", "acl", "laravel" ],
     "homepage": "https://github.com/mrberggg/authorizer",
