@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mrberggg/laravel-authorizer.svg?branch=1.1.4)](https://travis-ci.org/mrberggg/laravel-authorizer)
+[![Build Status](https://travis-ci.org/mrberggg/authorizer.svg)](https://travis-ci.org/mrberggg/authorizer)
 Laravel Authorizer
 ==================
 
