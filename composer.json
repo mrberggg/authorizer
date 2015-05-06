@@ -1,0 +1,26 @@
+{
+    "name": "berg/authorizer",
+    "description": "A package for basic ACL/role feature with Laravel integration",
+    "keywords": [ "authorize", "php", "acl", "laravel" ],
+    "homepage": "https://github.com/mrberggg/authorizer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Berg",
+            "email": "mrberggg@gmail.com",
+            "homepage": "https://github.com/mrberggg"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Berg\\Authorizer\\": "src"
+        }
+    }
+}
