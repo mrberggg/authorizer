@@ -32,9 +32,8 @@ This allows you to directly access the `is` and `hasAccessTo` methods. Usage:
 
     $user->is('admin');
     
-    $id = 1;
-    $model = new ModelName();
-    $user->hasAccessTo($model, $id);
+    $model = new ModelName(1);
+    $user->hasAccessTo($model);
 
 
 Check User's Role
