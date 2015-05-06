@@ -2,26 +2,26 @@
 Laravel Authorizer
 ==================
 
-A super simple role-based authorization package. Includes a Service Provider for use with Laravel 5.
+A super simple role-based authorization package.
 
 
 Installation
 ------------
 `composer require berg/authorizer`
 
+
 Usage
 -----
 
 In the User model, insert the following code:
 
-    use AuthorizerTrait;
     protected $authorizer;
 
     public function __construct(array $attributes = array())
     {
         parent::__construct($attributes);
         $roles = Role::lists('name'); // Just need an array of the user's role names
-        $this->authorizer = App::make('Authorizer', $roles);
+        $this->authorizer = new Berg\Authorizer\Authorizer($roles);
     }
 
 Optionally, add the use statement for the trait:
@@ -35,12 +35,6 @@ This allows you to directly access the `is` and `hasAccessTo` methods. Usage:
     $id = 1;
     $model = new ModelName();
     $user->hasAccessTo($model, $id);
-
-Laravel Config
---------------
-If using Laravel, add the following line to the providers array:
-
-    'Berg\Authorizer\AuthorizerServiceProvider',
 
 
 Check User's Role

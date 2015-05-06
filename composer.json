@@ -1,7 +1,7 @@
 {
     "name": "berg/authorize",
-    "description": "A package for basic ACL/role feature with Laravel integration",
-    "keywords": [ "authorize", "php", "acl", "laravel" ],
+    "description": "A package for basic ACL/role",
+    "keywords": [ "authorize", "php", "acl" ],
     "homepage": "https://github.com/mrberggg/authorizer",
     "license": "MIT",
     "authors": [

@@ -1,4 +1,4 @@
-<?php namespace Berg\Authorizer\Laravel;
+<?php namespace Berg\Authorizer;
 
 trait AuthorizerTrait
 {
