@@ -1,52 +1,30 @@
 [![Build Status](https://travis-ci.org/mrberggg/authorizer.svg)](https://travis-ci.org/mrberggg/authorizer)
-Laravel Authorizer
-==================
-
+# Laravel Authorizer
 A super simple role-based authorization package.
 
-
-Installation
-------------
+# Installation
 `composer require berg/authorizer`
 
-
-Usage
------
-
-In the User model, insert the following code:
-
-    protected $authorizer;
-
-    public function __construct(array $attributes = array())
-    {
-        parent::__construct($attributes);
-        $roles = Role::lists('name'); // Just need an array of the user's role names
-        $this->authorizer = new Berg\Authorizer\Authorizer($roles);
-    }
-
-Optionally, add the use statement for the trait:
+## Usage
+Add the use statement for the trait:
 
     use Berg\Authorizer\AuthorizerTrait;
     
-This allows you to directly access the `is` and `hasAccessTo` methods. Usage:
+This trait assumes you have a method named `getRoles()` that will return an array of your role names. You can then access the `is` and `hasAccessTo` methods. Usage:
 
     $user->is('admin');
     
     $model = new ModelName(1);
     $user->hasAccessTo($model);
 
+All Methods return a boolean value.
 
-Check User's Role
------------------
-
+### Check User's Role
 Example checking role:
 
     if($user->is('admin')) {}
 
-
-Authorizing Models
-------------------
-
+### Authorizing Models
 To authorize models, include an authorize method in the model you wish to have authorized. The method should accept the user to be authorized and the model ID and should return a boolean value. For example:
 
     $modelInstance = new ModelName(1);
@@ -58,4 +36,3 @@ Example model authorize implementation
     {
         return $this->userId === $user->id;
     }
-    
