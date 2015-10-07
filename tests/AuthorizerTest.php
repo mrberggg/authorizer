@@ -19,19 +19,16 @@ class AuthorizerTest extends PHPUnit_Framework_TestCase {
 
     public function testUserHasRoleInArray()
     {
-        $this->setExpectedException('Berg\Authorizer\Exceptions\RolesException');
         $this->assertTrue($this->authorizer->is(['admin', 'employee']));
     }
 
     public function testUserDoesNotHaveRole()
     {
-        $this->setExpectedException('Berg\Authorizer\Exceptions\RolesException');
         $this->assertFalse($this->authorizer->is('admin'));
     }
 
     public function testUserDoesNotHaveRoleInArray()
     {
-        $this->setExpectedException('Berg\Authorizer\Exceptions\RolesException');
         $this->assertFalse($this->authorizer->is(['admin', 'student']));
     }
 
