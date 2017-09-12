@@ -1,38 +1,40 @@
 [![Build Status](https://travis-ci.org/mrberggg/authorizer.svg)](https://travis-ci.org/mrberggg/authorizer)
-# Laravel Authorizer
-A super simple role-based authorization package.
+# Authorizer
+A super simple role-based authorization package. The examples here use Eloquent but the library is framework-agnostic.
 
 # Installation
 `composer require berg/authorizer`
 
 ## Usage
-Add the use statement for the trait:
+Add the use statement for the trait to your user model:
 
     use Berg\Authorizer\AuthorizerTrait;
     
-This trait assumes you have a method named `getRoles()` that will return an array of your role names. You can then access the `is` and `hasAccessTo` methods. Usage:
+This trait requires that the user class has a method named `getRoles()` that will return an array of your role names. You can then access the `is` and `hasAccessTo` methods. Usage:
 
     $user->is('admin');
     
-    $model = new ModelName(1);
+    $model = new ModelName($id);
     $user->hasAccessTo($model);
 
-All Methods return a boolean value.
+`is` and `hasAccessTo` both return a boolean value. `hasAccessTo` requires that the model you pass as an argument contains a method `authorize(User $user);`.
 
-### Check User's Role
+### `is(string $roleName)`
 Example checking role:
 
     if($user->is('admin')) {}
 
-### Authorizing Models
-To authorize models, include an authorize method in the model you wish to have authorized. The method should accept the user to be authorized and the model ID and should return a boolean value. For example:
+### `hasAccessTo(User $user)`
+To make a model authorizable, add the `Authorizable` interface to your model. This interface requires you add a single method, `authorize($user)` to your model. Add any required authorization logic in that method and return a boolean value.
 
-    $modelInstance = new ModelName(1);
-    if($user->hasAccessTo($modelInstance)) {}
-    
-Example model authorize implementation
-
-    public function authorize(User $user)
+    class Car 
     {
-        return $this->userId === $user->id;
+        public function authorize(User $user)
+        {
+            return $this->userId === $user->id;
+        }
     }
+    
+    $carId = 1;
+    $car = new Car($carId);
+    if($user->hasAccessTo($car)) {}
