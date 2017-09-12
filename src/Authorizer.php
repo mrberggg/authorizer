@@ -1,4 +1,6 @@
-<?php namespace Berg\Authorizer;
+<?php 
+
+namespace Berg\Authorizer;
 
 class Authorizer
 {
